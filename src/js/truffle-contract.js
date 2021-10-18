@@ -25,7 +25,10 @@ var contract = (function(module) {
     return this.provider.sendAsync.apply(this.provider, arguments);
   };
 
+  // https://knowledge.udacity.com/questions/677830
+  // The line below leads to "new BigNumber() not a base 16 number:" error
   var BigNumber = (new Web3()).toBigNumber(0).constructor;
+  //var BigNumber = (new Web3()).toBN(0).constructor;
 
   var Utils = {
     is_object: function(val) {

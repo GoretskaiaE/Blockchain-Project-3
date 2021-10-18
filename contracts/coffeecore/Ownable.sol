@@ -8,15 +8,18 @@ contract Ownable {
     event TransferOwnership(address indexed oldOwner, address indexed newOwner);
 
     /// Assign the contract to an owner
-    constructor () internal {
+    constructor() internal {
         origOwner = msg.sender;
         emit TransferOwnership(address(0), origOwner);
     }
 
     /// Look up the address of the owner
-    function owner() public view returns (address) {
+    /* Function owner commented because of "DeclarationError: Identifier already declared.
+    function owner() public view returns (address) {"
+    */
+    /* function owner() public view returns (address) {
         return origOwner;
-    }
+    }*/
 
     /// Define a function modifier 'onlyOwner'
     modifier onlyOwner() {
