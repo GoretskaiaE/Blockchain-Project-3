@@ -165,16 +165,16 @@ App = {
                 break;
 
             case 13:
-                return await App.fetchItemBufferTwo(event);
+                return await App.addFarmer(event);
                 break;
             case 14:
                 return await App.addDistributor(event);
                 break;
             case 15:
-                return await App.fetchItemBufferTwo(event);
+                return await App.addRetailer(event);
                 break;
             case 16:
-                return await App.fetchItemBufferTwo(event);
+                return await App.addConsumer(event);
                 break;
         }
     },
@@ -354,12 +354,15 @@ App = {
 
     },
 
-    addDistributor: function (event) {
+    //Maybe, "gas": 6721975, "gasPrice": 20000000000
+    addFarmer: function (event) {
         event.preventDefault();
         var processId = parseInt($(event.target).data('id'));
 
-        App.contracts.SupplyChain.deployed().then(function (instance) {
-            return instance.addDistributor(App.upc, { from: App.metamaskAccountID });
+        App.readForm();
+        console.log('App.accountID ' + App.accountID);
+        App.contracts.SupplyChain.deployed().then(function (instance) {                                           
+            return instance.addFarmer(App.accountID, { "from": App.metamaskAccountID});
         }).then(function (result) {
             $("#ftc-item").text(result);
             console.log('purchaseItem', result);
@@ -368,6 +371,55 @@ App = {
         });
     },
 
+    addDistributor: function (event) {
+        event.preventDefault();
+        var processId = parseInt($(event.target).data('id'));
+
+        App.readForm();
+console.log('App.accountID ' + App.accountID);
+        App.contracts.SupplyChain.deployed().then(function (instance) {
+            return instance.addDistributor(App.accountID, { from: App.metamaskAccountID });
+        }).then(function (result) {
+            $("#ftc-item").text(result);
+            console.log('purchaseItem', result);
+        }).catch(function (err) {
+            console.log(err.message);
+        });
+    },
+
+
+    addRetailer: function (event) {
+        event.preventDefault();
+        var processId = parseInt($(event.target).data('id'));
+
+        App.readForm();
+console.log('addRetailer App.accountID ' + App.accountID);
+        App.contracts.SupplyChain.deployed().then(function (instance) {
+            return instance.addRetailer(App.accountID, { from: App.metamaskAccountID });
+        }).then(function (result) {
+            $("#ftc-item").text(result);
+            console.log('purchaseItem', result);
+        }).catch(function (err) {
+            console.log(err.message);
+        });
+    },
+
+    addConsumer: function (event) {
+        event.preventDefault();
+        var processId = parseInt($(event.target).data('id'));
+
+        App.readForm();
+console.log('addConsumer App.accountID ' + App.accountID);
+        App.contracts.SupplyChain.deployed().then(function (instance) {
+            return instance.addConsumer(App.accountID, { from: App.metamaskAccountID });
+        }).then(function (result) {
+            $("#ftc-item").text(result);
+            console.log('purchaseItem', result);
+        }).catch(function (err) {
+            console.log(err.message);
+        });
+    },
+    
 };
 
 $(function () {
