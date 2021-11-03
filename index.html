@@ -20,8 +20,7 @@
     <div class="form-group">
         Account address
         <br>
-        <input type="text" id="accountID" name="accountID" value=""
-            size="50"><br>
+        <input type="text" id="accountID" name="accountID" value="" size="50"><br>
 
         <br>
         <button class="btn-buy" id="button" type="button" data-id="13">Add farmer</button>
@@ -33,7 +32,7 @@
 
 
     <div id="ftc-harvest">
-        <h2>Product Overview</h2>
+        <!---    <h2>Product Overview</h2>
         <div class="form-group">
             SKU
             <br>
@@ -50,13 +49,17 @@
                 <button class="btn-fetchTwo" id="button" type="button" data-id="11">Transaction History</button>
             </div>
         </div>
-        <div class=form-break></div>
-        <h2>Farm Details</h2>
+        <div class=form-break></div> -->
+        <h2>1. Harvest</h2>
         <div class="form-group">
-            Farmer ID
+            UPC
+            <br>
+            <input type="number" id="upc" name="upc" value=1><br>
+
+            <!---          Farmer ID
             <br>
             <input type="text" id="originFarmerID" name="originFarmerID" value="0x99c289eb2aacec289631a5ddf62cf27a63d4494f"
-                size="50"><br>
+                size="50"><br>-->
             Farm Name
             <br>
             <input type="text" id="originFarmName" name="originFarmName" value="John Doe"><br>
@@ -69,16 +72,134 @@
             Farm Longitude
             <br>
             <input type="text" id="originFarmLongitude" name="originFarmLongitude" value="144.341490"><br>
+            Product Notes
             <br>
+            <input type="text" id="productNotes" name="productNotes" value="Best beans for Espresso" size="60"><br>
             <button class="btn-harvest" id="button" type="button" data-id="1">Harvest</button>
+            <!---           <button class="btn-process" id="button" type="button" data-id="2">Process</button>
+            <button class="btn-pack" id="button" type="button" data-id="3">Pack</button>
+            <button class="btn-forsale" id="button" type="button" data-id="4">ForSale</button>-->
+        </div>
+
+        <div class=form-break></div>
+        <h2>2. Process, 3. Pack</h2>
+        <div class="form-group">
+            UPC
+            <br>
+            <input type="number" id="upc23" name="upc23" value=1><br>
             <button class="btn-process" id="button" type="button" data-id="2">Process</button>
             <button class="btn-pack" id="button" type="button" data-id="3">Pack</button>
+        </div>
+
+        <div class=form-break></div>
+        <h2>4. For sale</h2>
+        <div class="form-group">
+            UPC
+            <br>
+            <input type="number" id="upc4" name="upc4" value=1><br>
+            Product Price
+            <br>
+            <input type="number" id="productPrice" name="productPrice" value=1>ETH<br>
             <button class="btn-forsale" id="button" type="button" data-id="4">ForSale</button>
         </div>
+
+        <div class=form-break></div>
+        <h2>5. Buy, 6. Ship, 7. Receive, 8. Purchase</h2>
+        <div class="form-group">
+            UPC
+            <br>
+            <input type="number" id="upc5678" name="upc5678" value=1><br>
+            <button class="btn-buy" id="button" type="button" data-id="5">Buy</button>
+            <button class="btn-ship" id="button" type="button" data-id="6">Ship</button>
+            <button class="btn-receive" id="button" type="button" data-id="7">Receive</button>
+            <button class="btn-purchase" id="button" type="button" data-id="8">Purchase</button>
+        </div>
+
+        <div class=form-break></div>
+        <h2>Product Overview</h2>
+        <div class="form-group">
+            UPC
+            <br>
+            <input type="number" id="upcFetchItem" name="upcFetchItem" value=1><br>
+            <div class=button-div>
+                <button class="btn-fetchOne" id="button" type="button" data-id="9">Fetch Data 1</button>
+                <button class="btn-fetchTwo" id="button" type="button" data-id="10">Fetch Data 2</button>
+            </div>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td>itemSKU</td>
+                    <td id="db0"></td>
+                </tr>
+                <tr>
+                    <td>itemUPC</td>
+                    <td id="db1"></td>
+                </tr>
+                <tr>
+                    <td>ownerID</td>
+                    <td id="db2"></td>
+                </tr>
+                <tr>
+                    <td>originFarmerID</td>
+                    <td id="db3"></td>
+                </tr>
+                <tr>
+                    <td>originFarmName</td>
+                    <td id="db4"></td>
+                </tr>
+                <tr>
+                    <td>originFarmInformation</td>
+                    <td id="db5"></td>
+                </tr>
+                <tr>
+                    <td>originFarmLatitude</td>
+                    <td id="db6"></td>
+                </tr>
+                <tr>
+                    <td>originFarmLongitude</td>
+                    <td id="db7"></td>
+                </tr>
+                <tr>
+                    <td>productID</td>
+                    <td id="db22"></td>
+                </tr>
+                <tr>
+                    <td>productNotes</td>
+                    <td id="db23"></td>
+                </tr>
+                <tr>
+                    <td>productPrice</td>
+                    <td id="db24"></td>
+                </tr>
+                <tr>
+                    <td>itemState</td>
+                    <td id="db25"></td>
+                </tr>
+                <tr>
+                    <td>distributorID</td>
+                    <td id="db26"></td>
+                </tr>
+                <tr>
+                    <td>retailerID</td>
+                    <td id="db27"></td>
+                </tr>
+                <tr>
+                    <td>consumerID</td>
+                    <td id="db28"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="dataBuffer2">
+
+        </div>
+        <div class=form-break></div>
+
+        <!--
         <div class=form-break></div>
         <h2>Product Details</h2>
         <div class="form-group">
-            Product Notes
+          Product Notes
             <br>
             <input type="text" id="productNotes" name="productNotes" value="Best beans for Espresso" size="60"><br>
             Product Price
@@ -104,7 +225,7 @@
             <button class="btn-purchase" id="button" type="button" data-id="8">Purchase</button>
         </div>
         <div class=form-break></div>
-        <hr>
+        <hr>  -->
     </div>
 
     <h2>Transaction History<span id="ftc-history"></span></h2>

@@ -365,43 +365,4 @@ contract SupplyChain is Ownable, DistributorRole, ConsumerRole, RetailerRole, Fa
   consumerID
   );
   }
-
-
-   function allEvents(uint _upc) public view returns 
-  (
-  uint    itemSKU,
-  uint    itemUPC,
-  uint    productID,
-  string  productNotes,
-  uint    productPrice,
-  State    itemState,
-  address distributorID,
-  address retailerID,
-  address consumerID
-  ) 
-  {
-    // Assign values to the 9 parameters
-  itemSKU = items[_upc].sku;
-  itemUPC = items[_upc].upc;
-  productID = items[_upc].productID;
-  productNotes = items[_upc].productNotes;
-  productPrice = items[_upc].productPrice;
-  itemState = items[_upc].itemState;
-  distributorID = items[_upc].distributorID;
-  retailerID = items[_upc].retailerID;
-  consumerID = items[_upc].consumerID;  
-    
-  return 
-  (
-  itemSKU,
-  itemUPC,
-  productID,
-  productNotes,
-  productPrice,
-  itemState,
-  distributorID,
-  retailerID,
-  consumerID
-  );
-  }
 }
