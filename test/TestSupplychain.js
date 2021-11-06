@@ -297,8 +297,6 @@ contract('SupplyChain', function (accounts) {
             eventEmitted = true
         });
 
-
-        console.log('retailerID=' + retailerID);
         // Mark an item as Received by calling function receiveItem()
         await supplyChain.receiveItem(upc, { from: retailerID });
 

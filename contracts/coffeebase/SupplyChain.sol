@@ -161,6 +161,8 @@ contract SupplyChain is Ownable, DistributorRole, ConsumerRole, RetailerRole, Fa
 
   // Define a function 'harvestItem' that allows a farmer to mark an item 'Harvested'
   function harvestItem(uint _upc, address _originFarmerID, string _originFarmName, string _originFarmInformation, string  _originFarmLatitude, string  _originFarmLongitude, string  _productNotes) public 
+  // Call modifier to verify caller of this function
+  onlyFarmer
   {
     // Add the new item as part of Harvest
     items[_upc].sku = sku;

@@ -123,6 +123,7 @@ App = {
 
             App.fetchItemBufferOne();
             App.fetchItemBufferTwo();
+            App.fetchEvents();
         });
 
         return App.bindEvents();
@@ -316,7 +317,7 @@ App = {
         App.contracts.SupplyChain.deployed().then(function (instance) {
             return instance.fetchItemBufferOne(App.upcFetchItem);
         }).then(function (result) {
-            for (let j = 0; j < result.length; j++){
+            for (let j = 0; j < result.length; j++) {
                 console.log('test', j, result[j]);
                 $("#db" + j).text(result[j]);
             }
@@ -327,18 +328,53 @@ App = {
     },
 
     fetchItemBufferTwo: function () {
+        const state = {
+            0: 'Harvested',  
+            1: 'Processed', 
+            2: 'Packed',     
+            3: 'ForSale',    
+            4: 'Sold',       
+            5: 'Shipped',    
+            6: 'Received',   
+            7: 'Purchased'   
+        }
         App.readForm();
         App.contracts.SupplyChain.deployed().then(function (instance) {
             return instance.fetchItemBufferTwo.call(App.upcFetchItem);
         }).then(function (result) {
-            for (let j = 0; j < result.length; j++){
+            for (let j = 2; j < result.length; j++) {
                 console.log('test', j, result[j]);
-                $("#db2" + j).text(result[j]);
+                if (j == 5) {
+                    $("#db2" + j).text(state[result[j]]);
+                } else {
+                    $("#db2" + j).text(result[j]);
+                }
             }
             console.log('fetchItemBufferTwo', result);
         }).catch(function (err) {
             console.log(err.message);
         });
+    },
+
+    fetchEvents: function () {
+        if (typeof App.contracts.SupplyChain.currentProvider.sendAsync !== "function") {
+            App.contracts.SupplyChain.currentProvider.sendAsync = function () {
+                return App.contracts.SupplyChain.currentProvider.send.apply(
+                    App.contracts.SupplyChain.currentProvider,
+                    arguments
+                );
+            };
+        }
+
+        App.contracts.SupplyChain.deployed().then(function (instance) {
+            var events = instance.allEvents(function (err, log) {
+                if (!err)
+                    $("#ftc-events").append('<li>' + log.event + ' - ' + log.transactionHash + '</li>');
+            });
+        }).catch(function (err) {
+            console.log(err.message);
+        });
+
     },
 
     addFarmer: function (event) {
