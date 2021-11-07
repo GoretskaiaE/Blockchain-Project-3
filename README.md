@@ -16,6 +16,10 @@ Solidity v0.4.24 (solc-js)
 Node v10.16.3
 
 ## UML diagrams
+![Activity Diagram](/Diagrams/Activity.jpg)
+![Sequence Diagram](/Diagrams/Sequence.jpg)
+![State Diagram](/Diagrams/State.jpg)
+![Data Model Diagram](/Diagrams/DataModel.jpg)
 
 ## How to test locally
 Open Ganashe
