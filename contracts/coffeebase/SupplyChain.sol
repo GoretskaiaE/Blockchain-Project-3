@@ -90,8 +90,6 @@ contract SupplyChain is Ownable, DistributorRole, ConsumerRole, RetailerRole, Fa
     _;
     uint _price = items[_upc].productPrice;
     uint amountToReturn = msg.value - _price;
-    // ??? Why consumerID
-    //items[_upc].consumerID.transfer(amountToReturn);
     msg.sender.transfer(amountToReturn);
   }
 
@@ -228,6 +226,8 @@ contract SupplyChain is Ownable, DistributorRole, ConsumerRole, RetailerRole, Fa
   function buyItem(uint _upc) public payable 
     // Call modifier to check if upc has passed previous supply chain stage
     forSale(_upc)
+    // Call modifier to verify caller of this function
+    onlyDistributor
     // Call modifer to check if buyer has paid enough
     paidEnough(items[_upc].productPrice)
     // Call modifer to send any excess ether back to buyer

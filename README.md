@@ -1,9 +1,12 @@
-# Blockchain-Project-3
+# Ethereum Dapp for Tracking Items through Supply Chain
+
+The supply chain smart contract allows to track the authenticity of coffee beans.
 
 Starter code is here 
 https://github.com/udacity/nd1309-Project-6b-Example-Template
 
 Contract address on the Rinkeby Network: 0x0261A366a8F1CFcDE9cF33F01c195a8F24EC52CA
+
 Transaction ID: 0x9da8a9e26d9b05c633672d0a2a6fafcf86c04048b8f49b0a435cdba489fd8f9f
 
 Truffle version: Truffle v4.1.14
@@ -11,6 +14,8 @@ Truffle version: Truffle v4.1.14
 Solidity v0.4.24 (solc-js)
 
 Node v10.16.3
+
+## UML diagrams
 
 ## How to test locally
 Open Ganashe
@@ -25,7 +30,7 @@ npm run dev
 
 Open http://localhost:3000/ in browser with installed Metamask 
 
-Import an account who is the owner of the contract from Ganache to Metamask
+Import an account, that is the owner of the contract, from Ganache to Metamask
 
 Connect the account to http://localhost:3000/ in Metamask
 
