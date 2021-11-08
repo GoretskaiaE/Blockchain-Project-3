@@ -15,6 +15,11 @@ Solidity v0.4.24 (solc-js)
 
 Node v10.16.3
 
+## Libraries
+Truffle allows to test smart contracts and migrate them to the Ethereum blockchain.
+
+web3.js allows DApp to interact with contracts deployed to the Ethereum blockchain.
+
 ## UML diagrams
 ![Activity Diagram](/Diagrams/Activity.jpg)
 ![Sequence Diagram](/Diagrams/Sequence.jpg)
